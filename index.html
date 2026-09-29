@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BioLearn | Dunia Sel</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#06101a;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* ================= BACKGROUND ================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:#00e5ff;
+    filter:blur(160px);
+    opacity:.13;
+    top:-150px;
+    left:-150px;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:#00ff88;
+    filter:blur(160px);
+    opacity:.10;
+    right:-150px;
+    bottom:-100px;
+    z-index:-2;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(3,12,20,.72);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+    max-width:1150px;
+    margin:auto;
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:20px;
+}
+
+.logo-icon{
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:linear-gradient(135deg,#00e5ff,#00ff88);
+    color:#031016;
+}
+
+.menu{
+    display:flex;
+    gap:25px;
+}
+
+.menu a{
+    color:#aab9c6;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+.menu a:hover{
+    color:#00e5ff;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:120px 20px 70px;
+    position:relative;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.tag{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:30px;
+    background:rgba(0,229,255,.08);
+    border:1px solid rgba(0,229,255,.25);
+    color:#00e5ff;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(50px,9vw,100px);
+    line-height:.95;
+    font-weight:800;
+    letter-spacing:-5px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#00e5ff,#00ff88);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:28px auto;
+    color:#8fa2b2;
+    font-size:17px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 24px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,#00e5ff,#00ff88);
+    color:#031016;
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 35px rgba(0,229,255,.25);
+}
+
+.btn-secondary{
+    border:1px solid rgba(255,255,255,.13);
+    color:#fff;
+    background:rgba(255,255,255,.04);
+}
+
+.btn-secondary:hover{
+    background:rgba(255,255,255,.08);
+}
+
+/* floating DNA */
+
+.dna{
+    position:absolute;
+    width:180px;
+    height:180px;
+    border:2px solid rgba(0,229,255,.15);
+    border-radius:50%;
+    animation:rotate 15s linear infinite;
+}
+
+.dna.one{
+    top:22%;
+    left:5%;
+}
+
+.dna.two{
+    bottom:15%;
+    right:5%;
+    width:120px;
+    height:120px;
+    animation-duration:10s;
+}
+
+@keyframes rotate{
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
+}
+
+/* ================= GENERAL ================= */
+
+section{
+    max-width:1150px;
+    margin:auto;
+    padding:100px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title span{
+    color:#00e5ff;
+    font-size:13px;
+    letter-spacing:3px;
+}
+
+.section-title h2{
+    font-size:42px;
+    margin:8px 0;
+}
+
+.section-title p{
+    color:#7f92a2;
+}
+
+/* ================= ORGANEL CARDS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card{
+    padding:28px;
+    border-radius:24px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.065),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:#00e5ff;
+    filter:blur(80px);
+    opacity:.1;
+    right:-30px;
+    top:-30px;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(0,229,255,.3);
+}
+
+.card-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#8fa2b2;
+    font-size:14px;
+}
+
+/* ================= COMPARISON ================= */
+
+.table-wrapper{
+    overflow:hidden;
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.025);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:18px;
+    text-align:left;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+th{
+    color:#00e5ff;
+    background:rgba(0,229,255,.06);
+}
+
+td{
+    color:#b5c1cb;
+}
+
+tr:last-child td{
+    border-bottom:none;
+}
+
+/* ================= QUIZ ================= */
+
+.quiz-container{
+    max-width:800px;
+    margin:auto;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:28px;
+    padding:30px;
+    backdrop-filter:blur(15px);
+}
+
+.progress-area{
+    margin-bottom:30px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    color:#91a4b3;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.progress{
+    width:100%;
+    height:8px;
+    background:#15232e;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#00e5ff,#00ff88);
+    transition:.4s;
+}
+
+.question{
+    display:none;
+}
+
+.question.active{
+    display:block;
+    animation:fade .4s;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.question h3{
+    font-size:21px;
+    margin-bottom:22px;
+}
+
+.option{
+    display:block;
+    padding:16px;
+    margin:12px 0;
+    border-radius:14px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    cursor:pointer;
+    color:#bdc9d3;
+    transition:.3s;
+}
+
+.option:hover{
+    border-color:#00e5ff;
+    background:rgba(0,229,255,.05);
+}
+
+.option input{
+    margin-right:10px;
+    accent-color:#00e5ff;
+}
+
+.quiz-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:25px;
+}
+
+.quiz-btn{
+    flex:1;
+    border:0;
+    padding:14px;
+    border-radius:13px;
+    font-family:inherit;
+    font-weight:700;
+    cursor:pointer;
+    background:linear-gradient(135deg,#00e5ff,#00ff88);
+    color:#031016;
+}
+
+.quiz-btn.back{
+    background:#15232e;
+    color:#fff;
+}
+
+.result{
+    display:none;
+    text-align:center;
+}
+
+.result-icon{
+    font-size:70px;
+}
+
+.result h2{
+    font-size:38px;
+    margin:10px;
+}
+
+.score{
+    font-size:55px;
+    font-weight:800;
+    color:#00e5ff;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:50px 20px;
+    border-top:1px solid rgba(255,255,255,.07);
+    color:#607381;
+}
+
+footer strong{
+    color:#00e5ff;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    .menu{
+        gap:12px;
+    }
+
+    .menu a{
+        font-size:11px;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .quiz-container{
+        padding:20px;
+    }
+
+    .question h3{
+        font-size:18px;
+    }
+
+    th,td{
+        padding:12px;
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+<div class="nav">
+
+    <div class="logo">
+        <div class="logo-icon">🧬</div>
+        BioLearn
+    </div>
+
+    <div class="menu">
+        <a href="#materi">Materi</a>
+        <a href="#perbedaan">Perbandingan</a>
+        <a href="#kuis">Kuis</a>
+    </div>
+
+</div>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="dna one"></div>
+<div class="dna two"></div>
+
+<div class="hero-content">
+
+    <div class="tag">🔬 TUGAS BIOLOGI • KELAS</div>
+
+    <h1>
+        Mengenal<br>
+        <span class="gradient">Dunia Sel</span>
+    </h1>
+
+    <p>
+        Pelajari struktur, fungsi organel, serta perbedaan
+        antara sel hewan dan sel tumbuhan melalui
+        pembelajaran interaktif.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="#materi" class="btn btn-primary">
+            Mulai Belajar →
+        </a>
+
+        <a href="#kuis" class="btn btn-secondary">
+            🧪 Kerjakan Kuis
+        </a>
+    </div>
+
+</div>
+
+</header>
+
+
+<!-- MATERI -->
+
+<section id="materi">
+
+<div class="section-title">
+    <span>MATERI BIOLOGI</span>
+    <h2>Bagian Penting Sel</h2>
+    <p>Kenali fungsi organel yang terdapat di dalam sel.</p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+    <div class="card-icon">🧠</div>
+    <h3>Nukleus</h3>
+    <p>
+        Mengatur aktivitas sel dan menyimpan informasi
+        genetik berupa DNA.
+    </p>
+</div>
+
+<div class="card">
+    <div class="card-icon">⚡</div>
+    <h3>Mitokondria</h3>
+    <p>
+        Menghasilkan energi yang digunakan sel untuk
+        menjalankan berbagai aktivitas.
+    </p>
+</div>
+
+<div class="card">
+    <div class="card-icon">🏭</div>
+    <h3>Ribosom</h3>
+    <p>
+        Tempat berlangsungnya proses sintesis protein
+        di dalam sel.
+    </p>
+</div>
+
+<div class="card">
+    <div class="card-icon">🌿</div>
+    <h3>Kloroplas</h3>
+    <p>
+        Organel pada tumbuhan yang menjadi tempat
+        berlangsungnya fotosintesis.
+    </p>
+</div>
+
+<div class="card">
+    <div class="card-icon">💧</div>
+    <h3>Vakuola</h3>
+    <p>
+        Berfungsi menyimpan air, zat makanan,
+        pigmen dan berbagai zat lainnya.
+    </p>
+</div>
+
+<div class="card">
+    <div class="card-icon">🧱</div>
+    <h3>Dinding Sel</h3>
+    <p>
+        Memberikan bentuk dan perlindungan pada
+        sel tumbuhan.
+    </p>
+</div>
+
+</div>
+</section>
+
+
+<!-- PERBANDINGAN -->
+
+<section id="perbedaan">
+
+<div class="section-title">
+    <span>COMPARISON</span>
+    <h2>Sel Hewan & Sel Tumbuhan</h2>
+    <p>Beberapa perbedaan utama kedua jenis sel.</p>
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<tr>
+<th>Karakteristik</th>
+<th>🐱 Sel Hewan</th>
+<th>🌱 Sel Tumbuhan</th>
+</tr>
+
+<tr>
+<td>Dinding sel</td>
+<td>❌ Tidak ada</td>
+<td>✅ Ada</td>
+</tr>
+
+<tr>
+<td>Kloroplas</td>
+<td>❌ Tidak ada</td>
+<td>✅ Ada</td>
+</tr>
+
+<tr>
+<td>Vakuola</td>
+<td>Umumnya kecil</td>
+<td>Umumnya besar</td>
+</tr>
+
+<tr>
+<td>Bentuk</td>
+<td>Lebih fleksibel</td>
+<td>Lebih tetap</td>
+</tr>
+
+<tr>
+<td>Membran sel</td>
+<td>✅ Ada</td>
+<td>✅ Ada</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- KUIS -->
+
+<section id="kuis">
+
+<div class="section-title">
+    <span>TEST YOUR KNOWLEDGE</span>
+    <h2>🧪 Kuis Biologi</h2>
+    <p>20 pertanyaan untuk menguji pemahamanmu.</p>
+</div>
+
+
+<div class="quiz-container">
+
+<div class="progress-area">
+
+<div class="progress-info">
+<span id="nomor">Soal 1 dari 20</span>
+<span id="persen">5%</span>
+</div>
+
+<div class="progress">
+<div class="progress-bar" id="progress"></div>
+</div>
+
+</div>
+
+
+<!-- SOAL -->
+
+<div class="question active" data-answer="a">
+<h3>1. Apa yang dimaksud dengan sel?</h3>
+
+<label class="option">
+<input type="radio" name="q1" value="a">
+Unit terkecil penyusun makhluk hidup
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="b">
+Organ terbesar tubuh
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="c">
+Jaringan tubuh
+</label>
+</div>
+
+
+<div class="question" data-answer="b">
+<h3>2. Organel yang mengatur aktivitas sel adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q2" value="a">
+Ribosom
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="b">
+Nukleus
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="c">
+Vakuola
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>3. Organel penghasil energi adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q3" value="a">
+Mitokondria
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="b">
+Nukleus
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="c">
+Kloroplas
+</label>
+</div>
+
+
+<div class="question" data-answer="c">
+<h3>4. Tempat berlangsungnya fotosintesis adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q4" value="a">
+Mitokondria
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="b">
+Ribosom
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="c">
+Kloroplas
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>5. Organel tempat sintesis protein adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q5" value="a">
+Ribosom
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="b">
+Vakuola
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="c">
+Kloroplas
+</label>
+</div>
+
+
+<div class="question" data-answer="b">
+<h3>6. Struktur yang dimiliki sel tumbuhan tetapi tidak dimiliki sel hewan adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q6" value="a">
+Membran sel
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="b">
+Dinding sel
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="c">
+Sitoplasma
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>7. Fungsi utama membran sel adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q7" value="a">
+Mengatur keluar masuknya zat
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="b">
+Menghasilkan cahaya
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="c">
+Menghasilkan tulang
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>8. Cairan yang mengisi bagian dalam sel disebut...</h3>
+
+<label class="option">
+<input type="radio" name="q8" value="a">
+Sitoplasma
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="b">
+Dinding sel
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="c">
+Klorofil
+</label>
+</div>
+
+
+<div class="question" data-answer="b">
+<h3>9. Vakuola pada sel tumbuhan umumnya berukuran...</h3>
+
+<label class="option">
+<input type="radio" name="q9" value="a">
+Sangat kecil
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="b">
+Besar
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="c">
+Tidak ada
+</label>
+</div>
+
+
+<div class="question" data-answer="b">
+<h3>10. Zat hijau yang membantu fotosintesis disebut...</h3>
+
+<label class="option">
+<input type="radio" name="q10" value="a">
+Hemoglobin
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="b">
+Klorofil
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="c">
+Keratin
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>11. DNA terutama terdapat di dalam...</h3>
+
+<label class="option">
+<input type="radio" name="q11" value="a">
+Nukleus
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="b">
+Vakuola
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="c">
+Dinding sel
+</label>
+</div>
+
+
+<div class="question" data-answer="c">
+<h3>12. Sel hewan tidak memiliki...</h3>
+
+<label class="option">
+<input type="radio" name="q12" value="a">
+Membran sel
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="b">
+Sitoplasma
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="c">
+Dinding sel
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>13. Organel yang berperan dalam pencernaan intraseluler adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q13" value="a">
+Lisosom
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="b">
+Ribosom
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="c">
+Kloroplas
+</label>
+</div>
+
+
+<div class="question" data-answer="b">
+<h3>14. Fungsi dinding sel adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q14" value="a">
+Menghasilkan hormon
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="b">
+Memberikan bentuk dan perlindungan
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="c">
+Menghasilkan energi
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>15. Organel yang mengandung klorofil adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q15" value="a">
+Kloroplas
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="b">
+Nukleus
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="c">
+Lisosom
+</label>
+</div>
+
+
+<div class="question" data-answer="b">
+<h3>16. Sel tumbuhan dapat melakukan fotosintesis karena memiliki...</h3>
+
+<label class="option">
+<input type="radio" name="q16" value="a">
+Lisosom
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="b">
+Kloroplas
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="c">
+Sentriol
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>17. Tempat utama respirasi sel adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q17" value="a">
+Mitokondria
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="b">
+Vakuola
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="c">
+Nukleus
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>18. Sel tumbuhan memiliki bentuk yang lebih tetap karena adanya...</h3>
+
+<label class="option">
+<input type="radio" name="q18" value="a">
+Dinding sel
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="b">
+Ribosom
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="c">
+Lisosom
+</label>
+</div>
+
+
+<div class="question" data-answer="a">
+<h3>19. Organel yang berfungsi menyimpan berbagai zat adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q19" value="a">
+Vakuola
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="b">
+Ribosom
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="c">
+Mitokondria
+</label>
+</div>
+
+
+<div class="question" data-answer="c">
+<h3>20. Struktur yang dimiliki sel hewan dan sel tumbuhan adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q20" value="a">
+Kloroplas
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="b">
+Dinding sel
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="c">
+Membran sel
+</label>
+</div>
+
+
+<!-- BUTTON -->
+
+<div class="quiz-buttons">
+
+<button class="quiz-btn back" id="backBtn" onclick="previousQuestion()">
+← Kembali
+</button>
+
+<button class="quiz-btn" id="nextBtn" onclick="nextQuestion()">
+Lanjut →
+</button>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div class="result" id="result">
+
+<div class="result-icon">🏆</div>
+
+<h2>Kuis Selesai!</h2>
+
+<div class="score" id="score">
+0
+</div>
+
+<p id="message"></p>
+
+<br>
+
+<button class="quiz-btn" onclick="location.reload()">
+🔄 Ulangi Kuis
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>
+🧬 <strong>BioLearn</strong> — Media Pembelajaran Biologi
+</p>
+
+<p>
+Dibuat sebagai tugas pembelajaran interaktif
+</p>
+
+</footer>
+
+
+<script>
+
+let currentQuestion = 0;
+
+let questions = document.querySelectorAll(".question");
+
+let total = questions.length;
+
+let answers = [];
+
+let correct = 0;
+
+
+/* UPDATE PROGRESS */
+
+function updateProgress(){
+
+    let percentage =
+        ((currentQuestion + 1) / total) * 100;
+
+    document.getElementById("progress").style.width =
+        percentage + "%";
+
+    document.getElementById("persen").innerText =
+        Math.round(percentage) + "%";
+
+    document.getElementById("nomor").innerText =
+        "Soal " + (currentQuestion + 1) +
+        " dari " + total;
+
+}
+
+
+/* NEXT */
+
+function nextQuestion(){
+
+    let current = questions[currentQuestion];
+
+    let selected =
+        current.querySelector(
+            "input[type='radio']:checked"
+        );
+
+    if(!selected){
+
+        alert("⚠️ Pilih salah satu jawaban terlebih dahulu!");
+
+        return;
+    }
+
+    answers[currentQuestion] =
+        selected.value;
+
+
+    if(currentQuestion < total - 1){
+
+        questions[currentQuestion]
+            .classList.remove("active");
+
+        currentQuestion++;
+
+        questions[currentQuestion]
+            .classList.add("active");
+
+        updateProgress();
+
+        updateButtons();
+
+    }else{
+
+        finishQuiz();
+
+    }
+
+}
+
+
+/* PREVIOUS */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        questions[currentQuestion]
+            .classList.remove("active");
+
+        currentQuestion--;
+
+        questions[currentQuestion]
+            .classList.add("active");
+
+        updateProgress();
+
+        updateButtons();
+
+    }
+
+}
+
+
+/* BUTTON STATE */
+
+function updateButtons(){
+
+    let back =
+        document.getElementById("backBtn");
+
+    let next =
+        document.getElementById("nextBtn");
+
+    if(currentQuestion === 0){
+
+        back.style.visibility = "hidden";
+
+    }else{
+
+        back.style.visibility = "visible";
+
+    }
+
+    if(currentQuestion === total - 1){
+
+        next.innerText =
+            "🏆 Selesai";
+
+    }else{
+
+        next.innerText =
+            "Lanjut →";
+
+    }
+
+}
+
+
+/* FINISH */
+
+function finishQuiz(){
+
+    correct = 0;
+
+    questions.forEach(function(question,index){
+
+        let answer =
+            question.getAttribute("data-answer");
+
+        if(answers[index] === answer){
+
+            correct++;
+
+        }
+
+    });
+
+    let score =
+        correct * 5;
+
+    document.querySelector(".progress-area")
+        .style.display = "none";
+
+    questions.forEach(function(question){
+
+        question.style.display = "none";
+
+    });
+
+    document.querySelector(".quiz-buttons")
+        .style.display = "none";
+
+    document.getElementById("result")
+        .style.display = "block";
+
+    document.getElementById("score")
+        .innerText = score;
+
+    let message = "";
+
+    if(score >= 90){
+
+        message =
+        "🌟 Luar biasa! Pemahaman biologimu sangat baik.";
+
+    }else if(score >= 75){
+
+        message =
+        "🎉 Bagus! Kamu sudah memahami materi dengan baik.";
+
+    }else if(score >= 60){
+
+        message =
+        "👍 Cukup baik. Pelajari kembali beberapa materi.";
+
+    }else{
+
+        message =
+        "📚 Jangan menyerah! Coba pelajari materinya lagi.";
+
+    }
+
+    document.getElementById("message")
+        .innerText = message;
+
+}
+
+
+/* INITIAL */
+
+updateProgress();
+
+updateButtons();
+
+</script>
+
+</body>
+</html>
